@@ -1,5 +1,6 @@
 # Project specific
 .project
+dist/bundle.js
 
 ### Node ###
 # Logs
