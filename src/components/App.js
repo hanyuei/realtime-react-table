@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageList from './MessageList';
+import Comment from './comment/Comment';
 
 //include our newly installed horizon client
 const Horizon = require('@horizon/client');
@@ -40,16 +41,19 @@ const App = React.createClass({
   },
   
   render(){
+    // <form>
+    // <div className='center'>
+    // <button onClick={this.sendMessage}>Send Message</button>
+    // <input placeholder='By' onChange={this.handleChangeAuthor}></input>
+    // <input placeholder='write message here'
+    // onChange={this.handleChangeText}></input>
+    // </div>
+    // </form>
+    // <MessageList chat={chat}/>
     return (
       <div>
-        <form>
-        <div className='center'>
-          <button onClick={this.sendMessage}>Send Message</button>
-          <input placeholder='By' onChange={this.handleChangeAuthor}></input>
-          <input placeholder='write message here' onChange={this.handleChangeText}></input>
-        </div>
-        </form>
-        <MessageList chat={chat}/>
+
+        <Comment />
       </div>
      );
   }
