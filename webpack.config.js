@@ -19,10 +19,9 @@ module.exports = {
     loaders: [{
       exclude: /node_modules/,
       loader: 'babel-loader',
-      query: {
-        plugins: ['transform-runtime'],
-        presets: ['es2015', 'stage-0', 'react'],
-      }
+    },{
+      test: /\.css$/, // Only .css files
+      loader: 'style!css' // Run both loaders
     }]
   },
   resolve: {
