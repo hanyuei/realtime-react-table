@@ -1,12 +1,13 @@
 import React from 'react';
 import MessageList from './MessageList';
-import Comment from './comment/Comment';
+import CommentList from './comment/CommentList';
+import AddComment from './comment/AddComment';
 
 //include our newly installed horizon client
 const Horizon = require('@horizon/client');
 const horizon = Horizon({ secure: false });
 //this initiates our 'messages' collection inside of our Rethinkdb
-const chat = horizon('messages');
+const chat = horizon('comments');
 
 const App = React.createClass({
   getInitialState(){
@@ -40,20 +41,29 @@ const App = React.createClass({
     chat.store(message);
   },
   
-  render(){
-    // <form>
-    // <div className='center'>
-    // <button onClick={this.sendMessage}>Send Message</button>
-    // <input placeholder='By' onChange={this.handleChangeAuthor}></input>
-    // <input placeholder='write message here'
-    // onChange={this.handleChangeText}></input>
-    // </div>
-    // </form>
-    // <MessageList chat={chat}/>
+  renderMsg(){
     return (
       <div>
+       <form>
+       <div className='center'>
+       <button onClick={this.sendMessage}>Send Message</button>
+       <input placeholder='By' onChange={this.handleChangeAuthor}></input>
+       <input placeholder='write message here'
+       onChange={this.handleChangeText}></input>
+       </div>
+       </form>
+       <MessageList chat={chat}/>
+      </div>
+    );
+  },
+  
+  render(){
 
-        <Comment />
+    //<AddComment chat={chat}/>
+    return (
+      <div className='container-fluid'>
+        <CommentList chat={chat}/>
+        
       </div>
      );
   }
