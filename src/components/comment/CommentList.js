@@ -33,7 +33,7 @@ const CommentList = React.createClass({
     this.state.data.map(function(comment, i){
 
         console.log({
-          id: i
+          id: i,
           titile: comment.title,
           player: comment.player,
           club: comment.club,
@@ -41,7 +41,7 @@ const CommentList = React.createClass({
         });
         
         self.props.chat.upsert({
-          id: i
+          id: i,
           titile: comment.title,
           player: comment.player,
           club: comment.club,
