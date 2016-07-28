@@ -2,20 +2,28 @@ import React, { PropTypes } from 'react'
 import Note from './Note';
 import { Button } from 'antd';
 
-const NoteList = ({notes, onNoteChange, onSaveNotes, onLastLineFocus}) => {
-  //const dataLen = notes.length
-  console.log('notes:', notes, onNoteChange, onSaveNotes, onLastLineFocus);
-  let notesjsx = notes.map(function(note, i){
-    console.log('notes.map:', note, i);
+const NoteList = ({hzNotes, /*horizon,*/ notes, onNotesChange, onLastLineFocus}) => {
+
+  console.log('notes in NoteList:', notes, hzNotes, onNotesChange, onLastLineFocus);
+  
+  //const collection = horizon('notes');
+  const saveNotes = (notes) => {
+    console.log('save notes,', notes);
+    //collection.upsert(notes);
+    hzNotes.upsert(notes);
+  }
+  
+  let notesjsx = notes.map((note, i) => {
     if (i < notes.length-1)
-      return <Note {...note} key={note.id} onNoteChange={(colKey, value) => onNoteChange(note.id, colKey, value)} />
+      return <Note {...note} key={note.id} onNoteChange={(colKey, value) => onNotesChange(note.id, colKey, value)} />
     else 
-      return <Note {...note} key={note.id} onNoteChange={(colKey, value) => onNoteChange(note.id, colKey, value)} lastLine="true" onLastLineFocus={onLastLineFocus}/>
+      return <Note {...note} key={note.id} onNoteChange={(colKey, value) => onNotesChange(note.id, colKey, value)} lastLine="true" onLastLineFocus={onLastLineFocus}/>
   });
+
   return (
       <div>
         {notesjsx}
-        <Button type="primary" onClick={() => onSaveNotes(notes)}>
+        <Button type="primary" onClick={() => saveNotes(notes)} >
           Save
         </Button>
       </div> );
@@ -29,8 +37,7 @@ NoteList.propTypes = {
       club: PropTypes.string,
       gender: PropTypes.string
     }).isRequired).isRequired,
-    onNoteChange: PropTypes.func.isRequired,
-    onSaveNotes: PropTypes.func,
+    onNotesChange: PropTypes.func.isRequired,
     onLastLineFocus: PropTypes.func.isRequired,
   }
 

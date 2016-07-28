@@ -24,17 +24,21 @@ const note = (state, action) => {
   }
 }
 
-const initialState = [ note(undefined, addNote()),
+const initialState = [ 
+  note(undefined, addNote()),
   note(undefined, addNote()),
   note(undefined, addNote()),
   note(undefined, addNote())
 ]
 
 
-const notes = (state , action ) =>{
-  console.log(state, action);
-  if (typeof state === 'undefined') {
-    return initialState
+const notes = (state /* = initialState */ , action ) =>{
+  console.log('state in  notes reducers:', state);
+  console.log('action in notes reducers:', action);
+
+  if (typeof state === 'undefined' || (state.notes && state.notes.length <=4) ) {
+    console.log('init 4 empty reducers:');
+    return [];
   }
   
   switch(action.type){
@@ -43,8 +47,16 @@ const notes = (state , action ) =>{
         ...state,
         note(undefined, action)
       ]
+    // TODO try
     case 'EDIT_NOTE': 
-      return state.map(t => note(t, action))
+      console.log('EDIT_NOTE in reducer', action);
+      console.log('state before EDIT_NOTE', state);
+      const ret = state.map(t => note(t, action));
+      console.log('state after EDIT_NOTE', ret);
+      return ret;
+    case 'REFRESH_NOTES':
+      console.log('Refresh notes,', state, action);
+      return action.notes;
     default: 
       return state
   }

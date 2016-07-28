@@ -6,7 +6,6 @@ const RadioButton = Radio.Button;
 import styles from './styles.css'
 
 const Note = ({  title,player,club,gender,onNoteChange, lastLine, onLastLineFocus}) => {
-    console.log('note:', title,player,club,gender,onNoteChange, lastLine, onLastLineFocus);
     return (
     <Row gutter={16}>
     <Col className={styles.row} span={12}>
