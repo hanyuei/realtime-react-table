@@ -9,7 +9,7 @@ const Note = ({  title,player,club,gender,onNoteChange, lastLine, onLastLineFocu
   return (
     <div className='row'>
     <Row gutter={16}>
-    <Col span={9}>
+    <Col span={8}>
       <div className='column'>
         {lastLine === "true" ?
            <Input placeholder="comment title" id="title" name="title" value={title} onChange={(e) => onNoteChange('title', e.target.value)}  onFocus={onLastLineFocus} />
@@ -48,7 +48,7 @@ const Note = ({  title,player,club,gender,onNoteChange, lastLine, onLastLineFocu
       </Select>
       </div>
     </Col>
-    <Col span={3}>
+    <Col span={4}>
       <div className='column'>
       <RadioGroup value={gender} onChange={(e) => onNoteChange('gender', e.target.value)}>
         <RadioButton value="M">Male</RadioButton>
