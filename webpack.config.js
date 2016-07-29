@@ -16,13 +16,17 @@ module.exports = {
 //      loader: 'eslint',
 //      include: path.resolve(__dirname, 'src')
 //    }],
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-    },{
-      test: /\.css$/, // Only .css files
-      loader: 'style!css' // Run both loaders
-    }]
+    loaders: [
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel'}
+//    {
+//      exclude: /node_modules/,
+//      loader: 'babel-loader',
+//    },{
+//      test: /\.css$/, // Only .css files
+//      loader: 'style!css' // Run both loaders
+//    }
+    ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

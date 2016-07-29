@@ -15,9 +15,15 @@ import {refreshNotes} from '../actions'
 const App = (props) => {
   console.log('props in App', props);
   return (
-    <div className='container-fluid'>
+      <div>
+        <div>
+        <p></p>
+        <h3  className='center'>Welcome, Enjoy Notes</h3>  
+        <div className='container'>
           <EditableNoteList  {...props} />
-    </div> 
+        </div>
+        </div>
+     </div>
     )
 }
 

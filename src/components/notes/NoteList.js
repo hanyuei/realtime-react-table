@@ -24,9 +24,11 @@ const NoteList = ({horizon, notes, onNotesChange, onLastLineFocus}) => {
   return (
       <div>
         {notesjsx}
-        <Button type="primary" onClick={() => saveNotes(notes)} >
+        <div>
+        <Button type="primary" size="large" onClick={() => saveNotes(notes)} >
           Save
         </Button>
+        </div>
       </div> );
 };
 

@@ -50,8 +50,9 @@ const Comment =  React.createClass( {
   }, 
   render() {
     return (
-        <Row gutter={16}>
-          <Col className={styles.row} span={12}>
+        <div>
+        <Row className={styles.row} gutter={16}>
+          <Col span={12}>
             <div className={styles.column}>
               {this.props.lastLine === "true" ?
                  <Input placeholder="comment title" id="title" name="title" onChange={this.handleInputChange}  onFocus={this.handleFocus} />
@@ -60,7 +61,7 @@ const Comment =  React.createClass( {
               }
             </div>
           </Col>
-          <Col className={styles.row} span={4}>
+          <Col span={4}>
             <div className={styles.column}>            
             <Select multiple defaultValue='Pele' placeholder="Please select players" onChange={this.handlePlayerChange}>
               <Option value="Pele">Pele</Option>
@@ -76,7 +77,7 @@ const Comment =  React.createClass( {
             </Select>
             </div>
           </Col>
-          <Col className={styles.row} span={4}>
+          <Col span={4}>
           <div className={styles.column}>            
           <Select multiple tags defaultValue='Fiorentina'  placeholder="Please select clubs" onChange={this.handleClubChange}>
             <Option value="Fiorentina">Fiorentina</Option>  
@@ -91,7 +92,7 @@ const Comment =  React.createClass( {
           </Select>
           </div>
         </Col>
-          <Col className={styles.row} span={4}>
+          <Col span={4}>
             <div className={styles.column}>
             <RadioGroup onChange={this.handleGenderChange}>
               <RadioButton value="0">Male</RadioButton>
@@ -100,6 +101,7 @@ const Comment =  React.createClass( {
             </div>
           </Col>
         </Row>
+        </div>
       );
   }
 });
