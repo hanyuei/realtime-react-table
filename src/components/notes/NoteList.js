@@ -30,10 +30,10 @@ const NoteList = ({horizon, notes, onNotesChange, onLastLineFocus}) => {
 
 NoteList.propTypes = {
     notes: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       title: PropTypes.string,
-      player: PropTypes.string,
-      club: PropTypes.string,
+      player: PropTypes.arrayOf(PropTypes.string),
+      club: PropTypes.arrayOf(PropTypes.string),
       gender: PropTypes.string
     }).isRequired).isRequired,
     onNotesChange: PropTypes.func.isRequired,

@@ -12,9 +12,9 @@ const Note = ({  title,player,club,gender,onNoteChange, lastLine, onLastLineFocu
     <Col span={8}>
       <div className='column'>
         {lastLine === "true" ?
-           <Input placeholder="comment title" id="title" name="title" value={title} onChange={(e) => onNoteChange('title', e.target.value)}  onFocus={onLastLineFocus} />
+           <Input placeholder="note title" id="title" name="title" value={title} onChange={(e) => onNoteChange('title', e.target.value)}  onFocus={onLastLineFocus} />
         :
-          <Input placeholder="comment title" id="title" name="title" value={title} onChange={(e) => onNoteChange('title', e.target.value)} />
+          <Input placeholder="note title" id="title" name="title" value={title} onChange={(e) => onNoteChange('title', e.target.value)} />
         }
       </div>
     </Col>
@@ -63,8 +63,8 @@ const Note = ({  title,player,club,gender,onNoteChange, lastLine, onLastLineFocu
 
 Note.propTypes = {
     title: PropTypes.string,
-    player: PropTypes.string,
-    club: PropTypes.string,
+    player: PropTypes.arrayOf(PropTypes.string),
+    club: PropTypes.arrayOf(PropTypes.string),
     gender: PropTypes.string,
     onNoteChange: PropTypes.func.isRequired,
     lastLine: PropTypes.string,

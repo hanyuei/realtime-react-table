@@ -15,8 +15,8 @@ export const initNotes = () => {
     notes.push({
       id : guid(),
       title: null,
-      player: 'Maradona',
-      club: 'Fiorentina',
+      player: ['Maradona'],
+      club: ['Fiorentina'],
       gender: 'M',
       created: created+i
     });
@@ -35,8 +35,8 @@ export const addNote = () => {
     note: {
       id : guid(),
       title: null,
-      player: 'Maradona',
-      club: 'Fiorentina',
+      player: ['Maradona'],
+      club: ['Fiorentina'],
       gender: 'M',
       created: new Date().getTime()
     }
