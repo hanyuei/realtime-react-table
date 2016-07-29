@@ -19,11 +19,8 @@ const note = (state, action) => {
 }
 
 const notes = (state /* = initialState */ , action ) =>{
-  console.log('state in  notes reducers:', state);
-  console.log('action in notes reducers:', action);
 
   if (typeof state === 'undefined' || (state.notes && state.notes.length <=4) ) {
-    console.log('init 4 empty reducers:');
     return initNotes().notes;
   }
   
@@ -35,15 +32,10 @@ const notes = (state /* = initialState */ , action ) =>{
       ]
     // TODO try Computing Derived Data for optimize
     case 'EDIT_NOTE': 
-      console.log('EDIT_NOTE in reducer', action);
-      console.log('state before EDIT_NOTE', state);
       const ret = state.map(t => note(t, action));
-      console.log('state after EDIT_NOTE', ret);
       return ret;
     case 'REFRESH_NOTES':
-      console.log('Refresh notes,', state, action);
       if (typeof action.notes === 'undefined' || (action.notes && action.notes.length <4) ) {
-        console.log('init 4 empty reducers:');
         return initNotes().notes;
       }
       

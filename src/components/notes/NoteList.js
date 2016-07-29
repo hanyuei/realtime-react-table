@@ -3,12 +3,8 @@ import Note from './Note';
 import { Button } from 'antd';
 
 const NoteList = ({horizon, notes, onNotesChange, onLastLineFocus}) => {
-
-  console.log('notes in NoteList:', notes, horizon, onNotesChange, onLastLineFocus);
-  
   const collection = horizon('notes');
   const saveNotes = (notes) => {
-    console.log('save notes,', notes);
     notes.pop(); //pop the empty line
     collection.store(notes);
     //collection.upsert(notes);

@@ -13,7 +13,6 @@ import {refreshNotes} from '../actions'
 //const chat = horizon('comments');
 
 const App = (props) => {
-  console.log('props in App', props);
   return (
       <div>
         <div>

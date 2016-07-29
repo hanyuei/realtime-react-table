@@ -5,7 +5,6 @@ import {addNote, editNote, saveNotes,refreshNotes } from '../actions'
 import NoteList from '../components/notes/NoteList'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('mapStateToProps,', state, ownProps);
   return {
     notes: state.notes
   }
@@ -14,11 +13,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onNotesChange: (noteId, colKey, value) =>{
-      console.log('on Note change', noteId, colKey, value);
       dispatch(editNote(noteId, colKey, value));
     },
     onLastLineFocus: () => {
-      console.log('on last line focus, add one new line');
       dispatch(addNote());
     },
     onRefreshData: (notes) => {

@@ -28,7 +28,7 @@ hzNotes.order('created').watch().subscribe(
      store.dispatch(refreshNotes(data))
   },
   (err) => {
-    console.log(err);
+    console.log('horizon subscribe error', err);
   }
 );
 
