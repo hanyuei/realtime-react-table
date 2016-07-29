@@ -20,7 +20,8 @@ const hzNotes = horizon('notes');
 
 let store = createStore(noteApp)
 
-hzNotes.watch().subscribe(
+//limit(100).
+hzNotes.order('created').watch().subscribe(
   (notes) => {
      let data = notes.map(function(note) {return note});
      // update the notes when receive the new data from horizon server

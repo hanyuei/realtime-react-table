@@ -7,12 +7,39 @@ const guid = () => {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
+export const initNotes = () => {
+  let created =  new Date().getTime()
+  let notes = [];
+  
+  for (let i=1; i<=4; i++){
+    notes.push({
+      id : guid(),
+      title: null,
+      player: 'Maradona',
+      club: 'Fiorentina',
+      gender: 'M',
+      created: created+i
+    });
+  }
+  return {
+    type: 'INIT_NOTES',
+    notes: notes
+  }
+}
+
 // add a new empty Note
 export const addNote = () => {
   return {
     type: 'ADD_NOTE',
     // id: nextNoteId++,
-    id : guid()
+    note: {
+      id : guid(),
+      title: null,
+      player: 'Maradona',
+      club: 'Fiorentina',
+      gender: 'M',
+      created: new Date().getTime()
+    }
   }
 }
 

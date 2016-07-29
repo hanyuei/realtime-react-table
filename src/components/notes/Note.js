@@ -44,15 +44,14 @@ const Note = ({  title,player,club,gender,onNoteChange, lastLine, onLastLineFocu
       <Option value="Arsenal">Arsenal</Option>
       <Option value="Chelsead">Chelsea</Option>
       <Option value="Liverpool">Liverpool</Option>
-      <Option value="Newcastle Utd">Newcastle Utd</Option>
     </Select>
     </div>
   </Col>
-    <Col className={styles.row} value={gender} span={4}>
+    <Col className={styles.row} span={4}>
       <div className={styles.column}>
-      <RadioGroup onChange={(e) => onNoteChange('gender', e.target.value)}>
-        <RadioButton value="0">Male</RadioButton>
-        <RadioButton value="1">Female</RadioButton>
+      <RadioGroup value={gender} onChange={(e) => onNoteChange('gender', e.target.value)}>
+        <RadioButton value="M">Male</RadioButton>
+        <RadioButton value="F">Female</RadioButton>
       </RadioGroup>
       </div>
     </Col>

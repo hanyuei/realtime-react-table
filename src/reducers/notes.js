@@ -1,15 +1,9 @@
-import {addNote} from '../actions'
+import {addNote, initNotes} from '../actions'
 
 const note = (state, action) => {
   switch (action.type) {
     case 'ADD_NOTE':
-      return {
-        id: action.id, 
-        title: null,
-        player: null,
-        club: null,
-        gender: null
-      }
+      return action.note
     case 'EDIT_NOTE':
       if (state.id !== action.id) {
         return state
@@ -24,21 +18,13 @@ const note = (state, action) => {
   }
 }
 
-const initialState = [ 
-  note(undefined, addNote()),
-  note(undefined, addNote()),
-  note(undefined, addNote()),
-  note(undefined, addNote())
-]
-
-
 const notes = (state /* = initialState */ , action ) =>{
   console.log('state in  notes reducers:', state);
   console.log('action in notes reducers:', action);
 
   if (typeof state === 'undefined' || (state.notes && state.notes.length <=4) ) {
     console.log('init 4 empty reducers:');
-    return initialState;
+    return initNotes().notes;
   }
   
   switch(action.type){
@@ -56,9 +42,9 @@ const notes = (state /* = initialState */ , action ) =>{
       return ret;
     case 'REFRESH_NOTES':
       console.log('Refresh notes,', state, action);
-      if (typeof action.notes === 'undefined' || (action.notes && action.notes.length <=4) ) {
+      if (typeof action.notes === 'undefined' || (action.notes && action.notes.length <4) ) {
         console.log('init 4 empty reducers:');
-        return initialState;
+        return initNotes().notes;
       }
       
       // append a empty line to the end
