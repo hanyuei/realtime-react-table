@@ -38,7 +38,7 @@ const notes = (state /* = initialState */ , action ) =>{
 
   if (typeof state === 'undefined' || (state.notes && state.notes.length <=4) ) {
     console.log('init 4 empty reducers:');
-    return [];
+    return initialState;
   }
   
   switch(action.type){
@@ -47,7 +47,7 @@ const notes = (state /* = initialState */ , action ) =>{
         ...state,
         note(undefined, action)
       ]
-    // TODO try
+    // TODO try Computing Derived Data for optimize
     case 'EDIT_NOTE': 
       console.log('EDIT_NOTE in reducer', action);
       console.log('state before EDIT_NOTE', state);
@@ -56,6 +56,13 @@ const notes = (state /* = initialState */ , action ) =>{
       return ret;
     case 'REFRESH_NOTES':
       console.log('Refresh notes,', state, action);
+      if (typeof action.notes === 'undefined' || (action.notes && action.notes.length <=4) ) {
+        console.log('init 4 empty reducers:');
+        return initialState;
+      }
+      
+      // append a empty line to the end
+      action.notes.push(note(undefined, addNote()))
       return action.notes;
     default: 
       return state

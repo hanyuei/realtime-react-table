@@ -2,15 +2,16 @@ import React, { PropTypes } from 'react'
 import Note from './Note';
 import { Button } from 'antd';
 
-const NoteList = ({hzNotes, /*horizon,*/ notes, onNotesChange, onLastLineFocus}) => {
+const NoteList = ({horizon, notes, onNotesChange, onLastLineFocus}) => {
 
-  console.log('notes in NoteList:', notes, hzNotes, onNotesChange, onLastLineFocus);
+  console.log('notes in NoteList:', notes, horizon, onNotesChange, onLastLineFocus);
   
-  //const collection = horizon('notes');
+  const collection = horizon('notes');
   const saveNotes = (notes) => {
     console.log('save notes,', notes);
+    notes.pop(); //pop the empty line
+    collection.store(notes);
     //collection.upsert(notes);
-    hzNotes.upsert(notes);
   }
   
   let notesjsx = notes.map((note, i) => {

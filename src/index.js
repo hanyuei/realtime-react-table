@@ -13,6 +13,7 @@ import Horizon from '@horizon/client';
 
 const horizon = Horizon({
   secure: false
+  //lazyWrites: true
 });
 horizon.connect();
 const hzNotes = horizon('notes');
